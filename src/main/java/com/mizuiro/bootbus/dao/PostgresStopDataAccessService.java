@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("postgres")
+@Repository("stopPostgres")
 public class PostgresStopDataAccessService implements StopDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -26,18 +26,18 @@ public class PostgresStopDataAccessService implements StopDao {
     @Override
     public List<Stop> getAllStops() {
         String sqlQuery = "SELECT * FROM pt.stops";
-        return jdbcTemplate.query(sqlQuery, mapAirport());
+        return jdbcTemplate.query(sqlQuery, mapStop());
     }
 
     @Override
     public Stop getStopById(String stopId) throws EntityNotFoundException {
         String sqlQuery = "SELECT * FROM pt.stops WHERE stop_id='" + stopId + "'";
-        List<Stop> resultSet = jdbcTemplate.query(sqlQuery, mapAirport());
+        List<Stop> resultSet = jdbcTemplate.query(sqlQuery, mapStop());
         if(resultSet.isEmpty()) return null;
         else return resultSet.get(0);
     }
 
-    private RowMapper<Stop> mapAirport() {
+    private RowMapper<Stop> mapStop() {
         return (resultSet, i) -> {
           String stopId = resultSet.getString("stop_id");
             String stopName = resultSet.getString("stop_name");

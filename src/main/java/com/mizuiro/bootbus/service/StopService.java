@@ -13,14 +13,13 @@ public class StopService {
     private final StopDao stopDao;
 
     @Autowired
-    public StopService(@Qualifier("postgres") StopDao stopDao) {
+    public StopService(@Qualifier("stopPostgres") StopDao stopDao) {
         this.stopDao = stopDao;
     }
 
     public int addStop(Stop stop) {
         return stopDao.addStop(stop);
     }
-
 
     public List<Stop> getAllStops() {
         return stopDao.getAllStops();
