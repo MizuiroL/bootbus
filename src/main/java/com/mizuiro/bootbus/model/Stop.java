@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Stop {
     private String stopId;
     private String stopName;
-    private double stopLat;
-    private double stopLon;
+    private Double stopLat;
+    private Double stopLon;
     private String stopCode;
 
     public Stop(@JsonProperty("stopId") String stopId,

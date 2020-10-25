@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class CalendarDate {
     private String serviceId;
     private LocalDate date;
-    private int exceptionType;
+    private Integer exceptionType;
 
     public CalendarDate(@JsonProperty("serviceId") String serviceId,
                         @JsonProperty("date") LocalDate date,
@@ -25,7 +25,7 @@ public class CalendarDate {
         return date;
     }
 
-    public int getExceptionType() {
+    public Integer getExceptionType() {
         return exceptionType;
     }
 }
