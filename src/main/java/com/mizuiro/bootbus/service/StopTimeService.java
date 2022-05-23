@@ -13,7 +13,7 @@ public class StopTimeService {
     private final StopTimeDao stopTimeDao;
 
     @Autowired
-    public StopTimeService(@Qualifier("stopTimePostgres") StopTimeDao stopTimeDao) {
+    public StopTimeService(@Qualifier("stopTimeSql") StopTimeDao stopTimeDao) {
         this.stopTimeDao = stopTimeDao;
     }
 

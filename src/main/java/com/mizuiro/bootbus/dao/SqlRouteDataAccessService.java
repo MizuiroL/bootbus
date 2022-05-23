@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("routePostgres")
-public class PostgresRouteDataAccessService implements RouteDao {
+@Repository("routeSql")
+public class SqlRouteDataAccessService implements RouteDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public PostgresRouteDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlRouteDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

@@ -14,7 +14,7 @@ public class TripService {
     private final TripDao tripDao;
 
     @Autowired
-    public TripService(@Qualifier("tripPostgres") TripDao tripDao) {
+    public TripService(@Qualifier("tripSql") TripDao tripDao) {
         this.tripDao = tripDao;
     }
 

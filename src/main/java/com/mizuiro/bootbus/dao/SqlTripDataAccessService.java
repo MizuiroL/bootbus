@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("tripPostgres")
-public class PostgresTripDataAccessService implements TripDao {
+@Repository("tripSql")
+public class SqlTripDataAccessService implements TripDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public PostgresTripDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlTripDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

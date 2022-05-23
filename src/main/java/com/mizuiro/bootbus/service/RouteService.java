@@ -13,7 +13,7 @@ public class RouteService {
     private final RouteDao routeDao;
 
     @Autowired
-    public RouteService(@Qualifier("routePostgres") RouteDao routeDao) {
+    public RouteService(@Qualifier("routeSql") RouteDao routeDao) {
         this.routeDao = routeDao;
     }
 

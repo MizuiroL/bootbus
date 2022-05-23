@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("stopPostgres")
-public class PostgresStopDataAccessService implements StopDao {
+@Repository("stopSql")
+public class SqlStopDataAccessService implements StopDao {
 
     private final JdbcTemplate jdbcTemplate;
     private String sqlQuery;
 
-    public PostgresStopDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlStopDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
     // TODO write method

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.TimeZone;
 
-@Repository("agencyPostgres")
-public class PostgresAgencyDataAccessService implements AgencyDao {
+@Repository("agencySql")
+public class SqlAgencyDataAccessService implements AgencyDao {
     private final JdbcTemplate jdbcTemplate;
     private String sqlQuery;
 
-    public PostgresAgencyDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlAgencyDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
     // TODO write method

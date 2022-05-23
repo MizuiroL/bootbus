@@ -14,7 +14,7 @@ public class CalendarDateService {
     private final CalendarDateDao calendarDateDao;
 
     @Autowired
-    public CalendarDateService(@Qualifier("calendarDatePostgres") CalendarDateDao calendarDateDao) {
+    public CalendarDateService(@Qualifier("calendarDateSql") CalendarDateDao calendarDateDao) {
         this.calendarDateDao = calendarDateDao;
     }
 

@@ -1,6 +1,6 @@
 package com.mizuiro.bootbus.dao;
 
-public abstract class PostgresDataAccessService {
+public abstract class SqlDataAccessService {
  /*   private final JdbcTemplate jdbcTemplate;
 
     protected PostgresDataAccessService(JdbcTemplate jdbcTemplate) {

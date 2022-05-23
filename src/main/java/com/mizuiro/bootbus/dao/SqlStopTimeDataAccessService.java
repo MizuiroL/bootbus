@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.sql.Time;
 import java.util.List;
 
-@Repository("stopTimePostgres")
-public class PostgresStopTimeDataAccessService implements StopTimeDao {
+@Repository("stopTimeSql")
+public class SqlStopTimeDataAccessService implements StopTimeDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public PostgresStopTimeDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlStopTimeDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

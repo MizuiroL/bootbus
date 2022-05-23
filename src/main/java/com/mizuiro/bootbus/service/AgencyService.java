@@ -13,7 +13,7 @@ public class AgencyService {
     private final AgencyDao agencyDao;
 
     @Autowired
-    public AgencyService(@Qualifier("agencyPostgres") AgencyDao agencyDao) {
+    public AgencyService(@Qualifier("agencySql") AgencyDao agencyDao) {
         this.agencyDao = agencyDao;
     }
 

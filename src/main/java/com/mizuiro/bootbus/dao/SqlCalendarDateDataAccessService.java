@@ -10,11 +10,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@Repository("calendarDatePostgres")
-public class PostgresCalendarDateDataAccessService implements CalendarDateDao {
+@Repository("calendarDateSql")
+public class SqlCalendarDateDataAccessService implements CalendarDateDao {
     private final JdbcTemplate jdbcTemplate;
 
-    public PostgresCalendarDateDataAccessService(JdbcTemplate jdbcTemplate) {
+    public SqlCalendarDateDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
