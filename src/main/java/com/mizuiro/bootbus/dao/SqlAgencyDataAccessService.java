@@ -25,13 +25,13 @@ public class SqlAgencyDataAccessService implements AgencyDao {
 
     @Override
     public List<Agency> getAllAgencies() {
-        String sqlQuery = "SELECT * FROM pt.agency";
+        String sqlQuery = "SELECT * FROM agency";
         return jdbcTemplate.query(sqlQuery, mapAgency());
     }
 
     @Override
     public Agency getAgencyById(String agencyId) throws EntityNotFoundException {
-        String sqlQuery = "SELECT * FROM pt.agency WHERE agency_id='" + agencyId + "'";
+        String sqlQuery = "SELECT * FROM agency WHERE agency_id='" + agencyId + "'";
         List<Agency> resultSet = jdbcTemplate.query(sqlQuery, mapAgency());
         if(resultSet.isEmpty()) return null;
         else return resultSet.get(0);

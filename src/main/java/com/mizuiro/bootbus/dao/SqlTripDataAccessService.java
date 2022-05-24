@@ -23,25 +23,25 @@ public class SqlTripDataAccessService implements TripDao {
 
     @Override
     public List<Trip> getAllTrips() {
-        String sqlQuery = "SELECT * FROM pt.trips";
+        String sqlQuery = "SELECT * FROM trips";
         return jdbcTemplate.query(sqlQuery, mapTrip());
     }
 
     @Override
     public List<Trip> getTripsByRoute(String routeId) {
-        String sqlQuery = "SELECT * FROM pt.trips WHERE route_id='"+ routeId + "'";
+        String sqlQuery = "SELECT * FROM trips WHERE route_id='"+ routeId + "'";
         return jdbcTemplate.query(sqlQuery, mapTrip());
     }
 
     @Override
     public List<Trip> getTripsByService(String serviceId) {
-        String sqlQuery = "SELECT * FROM pt.trips WHERE service_id='"+ serviceId + "'";
+        String sqlQuery = "SELECT * FROM trips WHERE service_id='"+ serviceId + "'";
         return jdbcTemplate.query(sqlQuery, mapTrip());
     }
 
     @Override
     public Trip getTripById(String tripId) throws EntityNotFoundException {
-        String sqlQuery = "SELECT * FROM pt.trips WHERE trip_id='"+ tripId + "'";
+        String sqlQuery = "SELECT * FROM trips WHERE trip_id='"+ tripId + "'";
         List<Trip> resultSet = jdbcTemplate.query(sqlQuery, mapTrip());
         if(resultSet.isEmpty()) return null;
         else return resultSet.get(0);

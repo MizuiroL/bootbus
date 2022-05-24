@@ -25,13 +25,13 @@ public class SqlStopDataAccessService implements StopDao {
 
     @Override
     public List<Stop> getAllStops() {
-        String sqlQuery = "SELECT * FROM pt.stops";
+        String sqlQuery = "SELECT * FROM stops";
         return jdbcTemplate.query(sqlQuery, mapStop());
     }
 
     @Override
     public Stop getStopById(String stopId) throws EntityNotFoundException {
-        String sqlQuery = "SELECT * FROM pt.stops WHERE stop_id='" + stopId + "'";
+        String sqlQuery = "SELECT * FROM stops WHERE stop_id='" + stopId + "'";
         List<Stop> resultSet = jdbcTemplate.query(sqlQuery, mapStop());
         if(resultSet.isEmpty()) return null;
         else return resultSet.get(0);

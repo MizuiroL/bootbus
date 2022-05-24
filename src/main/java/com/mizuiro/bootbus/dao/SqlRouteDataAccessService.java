@@ -23,19 +23,19 @@ public class SqlRouteDataAccessService implements RouteDao {
 
     @Override
     public List<Route> getAllRoutes() {
-        String sqlQuery = "SELECT * FROM pt.routes";
+        String sqlQuery = "SELECT * FROM routes";
         return jdbcTemplate.query(sqlQuery, mapRoute());
     }
 
     @Override
     public List<Route> getRoutesByAgency(String agency) {
-        String sqlQuery = "SELECT * FROM pt.routes WHERE agency_id='" + agency + "'";
+        String sqlQuery = "SELECT * FROM routes WHERE agency_id='" + agency + "'";
         return jdbcTemplate.query(sqlQuery, mapRoute());
     }
 
     @Override
     public Route getRouteById(String routeId) throws EntityNotFoundException {
-        String sqlQuery = "SELECT * FROM pt.routes WHERE route_id='" + routeId + "'";
+        String sqlQuery = "SELECT * FROM routes WHERE route_id='" + routeId + "'";
         List<Route> resultSet = jdbcTemplate.query(sqlQuery, mapRoute());
         if(resultSet.isEmpty()) return null;
         else return resultSet.get(0);

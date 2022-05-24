@@ -25,20 +25,20 @@ public class SqlCalendarDateDataAccessService implements CalendarDateDao {
 
     @Override
     public List<CalendarDate> getAllCalendarDates() {
-        String sqlQuery = "SELECT * FROM pt.calendar_dates";
+        String sqlQuery = "SELECT * FROM calendar_dates";
         return jdbcTemplate.query(sqlQuery, mapCalendarDate());
     }
 
     @Override
     public List<CalendarDate> getCalendarDatesById(String serviceId) throws EntityNotFoundException {
-        String sqlQuery = "SELECT * FROM pt.calendar_dates WHERE service_id='" + serviceId + "'";
+        String sqlQuery = "SELECT * FROM calendar_dates WHERE service_id='" + serviceId + "'";
         return jdbcTemplate.query(sqlQuery, mapCalendarDate());
     }
 
     @Override
     public List<CalendarDate> getServicesByDate(LocalDate date) {
         System.out.println(date.format(DateTimeFormatter.BASIC_ISO_DATE).toString());
-        String sqlQuery = "SELECT * FROM pt.calendar_dates WHERE date='" + date.format(DateTimeFormatter.BASIC_ISO_DATE) + "'";
+        String sqlQuery = "SELECT * FROM calendar_dates WHERE date='" + date.format(DateTimeFormatter.BASIC_ISO_DATE) + "'";
         return jdbcTemplate.query(sqlQuery, mapCalendarDate());
     }
 

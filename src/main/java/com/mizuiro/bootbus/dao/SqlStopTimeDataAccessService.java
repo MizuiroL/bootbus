@@ -23,19 +23,19 @@ public class SqlStopTimeDataAccessService implements StopTimeDao {
 
     @Override
     public List<StopTime> getAllTrips() {
-        String sqlQuery = "SELECT * FROM pt.stop_times";
+        String sqlQuery = "SELECT * FROM stop_times";
         return jdbcTemplate.query(sqlQuery, mapStopTime());
     }
 
     @Override
     public List<StopTime> getStopTimesByStop(String stopId) {
-        String sqlQuery = "SELECT * FROM pt.stop_times WHERE stop_id = '" + stopId + "'";
+        String sqlQuery = "SELECT * FROM stop_times WHERE stop_id = '" + stopId + "'";
         return jdbcTemplate.query(sqlQuery, mapStopTime());
     }
 
     @Override
     public List<StopTime> getStopTimesByTrip(String tripId) {
-        String sqlQuery = "SELECT * FROM pt.stop_times WHERE trip_id = '" + tripId + "'";
+        String sqlQuery = "SELECT * FROM stop_times WHERE trip_id = '" + tripId + "'";
         return jdbcTemplate.query(sqlQuery, mapStopTime());
     }
 
