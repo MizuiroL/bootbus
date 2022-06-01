@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@Repository("stopSql")
+@Repository("travelSql")
 public class SqlTravelDataAccessService implements TravelDao {
 
     private final JdbcTemplate jdbcTemplate;
