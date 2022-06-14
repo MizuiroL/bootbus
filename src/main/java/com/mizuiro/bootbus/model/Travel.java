@@ -3,6 +3,7 @@ package com.mizuiro.bootbus.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Time;
+import java.time.Duration;
 import java.time.LocalDate;
 
 public class Travel {
@@ -13,6 +14,7 @@ public class Travel {
     private String arrivalStopName;
     private Time arrivalTime;
     private LocalDate date;
+    private Duration travelTime;
 
     public Travel(@JsonProperty("departureStopCode") String departureStopCode,
                   @JsonProperty("departureStopName") String departureStopName,
@@ -20,13 +22,15 @@ public class Travel {
                   @JsonProperty("arrivalStopCode") String arrivalStopCode,
                   @JsonProperty("arrivalStopName") String arrivalStopName,
                   @JsonProperty("arrivalTime") Time arrivalTime,
-                  @JsonProperty("date")LocalDate date) {
+                  @JsonProperty("date")LocalDate date,
+                  @JsonProperty("travelTime") Duration travelTime) {
 
         this.departureStopName = departureStopName;
         this.departureTime = departureTime;
         this.arrivalStopName = arrivalStopName;
         this.arrivalTime = arrivalTime;
         this.date = date;
+        this.travelTime = travelTime;
     }
 
     public String getDepartureStopCode() {

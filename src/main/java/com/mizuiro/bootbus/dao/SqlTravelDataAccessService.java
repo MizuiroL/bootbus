@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Time;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -46,7 +47,8 @@ public class SqlTravelDataAccessService implements TravelDao {
             String arrivalStopName = resultSet.getString("arrival_stop_name");
             Time arrivalTime = resultSet.getTime("arrival_time");
             LocalDate date = LocalDate.parse(resultSet.getString("date"), DateTimeFormatter.BASIC_ISO_DATE);
-            return new Travel(departureStopCode, departureStopName, departureTime, arrivalStopCode, arrivalStopName, arrivalTime, date);
+            Duration travelTime = Duration.between(departureTime.toLocalTime(), arrivalTime.toLocalTime());
+            return new Travel(departureStopCode, departureStopName, departureTime, arrivalStopCode, arrivalStopName, arrivalTime, date, travelTime);
         };
     }
 }
