@@ -24,6 +24,10 @@ public class SqlTravelDataAccessService implements TravelDao {
 
     @Override
     public List<Travel> getTravelTimes(String departureStopId, String arrivalStopId) throws TravelNotFoundException {
+        return getTravelTimesByDate(departureStopId, arrivalStopId, "CURDATE()");
+    }
+
+    public List<Travel> getTravelTimesByDate(String departureStopId, String arrivalStopId, String date) throws TravelNotFoundException {
         String sqlQuery = "SELECT deps.stop_code AS departure_stop_code, deps.stop_name AS departure_stop_name, partenza.departure_time AS departure_time, arrs.stop_code AS arrival_stop_code, arrs.stop_name AS arrival_stop_name, arrivo.arrival_time AS arrival_time, `date`" +
                 "FROM stop_times AS partenza, stop_times AS arrivo, trips AS t, calendar_dates AS cd, stops AS deps, stops AS arrs\n" +
                 "WHERE partenza.stop_id='" + departureStopId + "'\n" + // RUF020_600
@@ -33,7 +37,7 @@ public class SqlTravelDataAccessService implements TravelDao {
                 "AND t.service_id=cd.service_id\n" +
                 "AND partenza.stop_id=deps.stop_id\n" +
                 "AND arrivo.stop_id=arrs.stop_id\n" +
-                "AND cd.`date`=CURDATE()\n" +
+                "AND cd.`date`=" + date + "\n" +
                 "ORDER BY partenza.departure_time;";
         return jdbcTemplate.query(sqlQuery, mapTravel());
     }
