@@ -86,13 +86,13 @@ DROP TABLE IF EXISTS calendar;
 
 CREATE TABLE `calendar` (
   service_id VARCHAR(50) PRIMARY KEY,
-  monday TINYINT(1),
-  tuesday TINYINT(1),
-  wednesday TINYINT(1),
-  thursday TINYINT(1),
-  friday TINYINT(1),
-  saturday TINYINT(1),
-  sunday TINYINT(1),
+  monday TINYINT,
+  tuesday TINYINT,
+  wednesday TINYINT,
+  thursday TINYINT,
+  friday TINYINT,
+  saturday TINYINT,
+  sunday TINYINT,
   start_date VARCHAR(8),
   end_date VARCHAR(8)
 );
