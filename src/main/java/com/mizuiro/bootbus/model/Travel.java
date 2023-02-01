@@ -25,8 +25,10 @@ public class Travel {
                   @JsonProperty("date")LocalDate date,
                   @JsonProperty("travelTime") Duration travelTime) {
 
+        this.departureStopCode = departureStopCode;
         this.departureStopName = departureStopName;
         this.departureTime = departureTime;
+        this.arrivalStopCode = arrivalStopCode;
         this.arrivalStopName = arrivalStopName;
         this.arrivalTime = arrivalTime;
         this.date = date;
@@ -60,4 +62,6 @@ public class Travel {
     public LocalDate getDate() {
         return date;
     }
+
+    public Long getTravelTime() { return travelTime.toMinutes(); }
 }
