@@ -14,4 +14,5 @@ public interface RouteDao {
 
     Route getRouteById(String routeId) throws EntityNotFoundException;
 
+    List<Route> getRoutesByStop(String stop);
 }

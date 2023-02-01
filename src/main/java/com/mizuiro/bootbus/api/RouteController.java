@@ -34,6 +34,11 @@ public class RouteController {
         return routeService.getRoutesByAgency(agency);
     }
 
+    @GetMapping(path = "by-stop/{stop}")
+    public List<Route> getRoutesByStop(@PathVariable("stop") String stop) {
+        return routeService.getRoutesByStop(stop);
+    }
+
     @GetMapping(path = "{routeId}")
     public Route getRouteById(@PathVariable("routeId") String routeId) {
         Route route = routeService.getRouteById(routeId);

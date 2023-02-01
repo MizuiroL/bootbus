@@ -41,6 +41,15 @@ public class SqlRouteDataAccessService implements RouteDao {
         else return resultSet.get(0);
     }
 
+    @Override
+    public List<Route> getRoutesByStop(String stop) {
+        String sqlQuery = "SELECT UNIQUE routes.* FROM routes, trips, stop_times\n" +
+                "WHERE stop_times.stop_id='"+stop+"'\n" +
+                "AND routes.route_id=trips.route_id\n" +
+                "AND trips.trip_id=stop_times.trip_id";
+        return jdbcTemplate.query(sqlQuery, mapRoute());
+    }
+
     private RowMapper<Route> mapRoute() {
         return (resultSet, i) -> {
             String routeId = resultSet.getString("route_id");

@@ -32,4 +32,8 @@ public class RouteService {
     public List<Route> getRoutesByAgency(String agency) {
         return routeDao.getRoutesByAgency(agency);
     }
+
+    public List<Route> getRoutesByStop(String stop) {
+        return routeDao.getRoutesByStop(stop);
+    }
 }
