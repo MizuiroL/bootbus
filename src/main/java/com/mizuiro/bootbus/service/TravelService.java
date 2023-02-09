@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TravelService {
@@ -18,9 +19,11 @@ public class TravelService {
     public TravelService(@Qualifier("travelSql") TravelDao travelDao) {
         this.travelDao = travelDao;
     }
-
+    
     public List<Travel> getTravelTimes(String departureStopId, String arrivalStopId) throws TravelNotFoundException {
-        return travelDao.getTravelTimes(departureStopId, arrivalStopId);
+        List<Travel> travels = travelDao.getTravelTimes(departureStopId, arrivalStopId);
+        travels = travels.stream().filter(t -> t.getTravelTime() > 0).collect(Collectors.toList());
+        return travels;
     }
 
 }
