@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS shapes;
+DROP TABLE IF EXISTS stop_times;
+DROP TABLE IF EXISTS trips;
+DROP TABLE IF EXISTS calendar_dates;
+DROP TABLE IF EXISTS calendar;
+DROP TABLE IF EXISTS routes;
+DROP TABLE IF EXISTS stops;
 DROP TABLE IF EXISTS agency;
 
 CREATE TABLE `agency` (
@@ -10,8 +17,6 @@ CREATE TABLE `agency` (
   agency_fare_url VARCHAR(50),
   agency_email VARCHAR(50)
 );
-
-DROP TABLE IF EXISTS stops;
 
 CREATE TABLE `stops` (
   stop_id VARCHAR(50) PRIMARY KEY,
@@ -31,8 +36,6 @@ CREATE TABLE `stops` (
   platform_code VARCHAR(50)
   );
 
-DROP TABLE IF EXISTS routes;
-
 CREATE TABLE `routes` (
   route_id VARCHAR(50) PRIMARY KEY,
   agency_id VARCHAR(50),
@@ -46,43 +49,9 @@ CREATE TABLE `routes` (
   route_sort_order INT UNSIGNED,
   continuous_pickup INT,
   continuous_drop_off INT,
-  network_id VARCHAR(50)
+  network_id VARCHAR(50),
+FOREIGN KEY (agency_id) REFERENCES agency(agency_id)
 );
-
-DROP TABLE IF EXISTS trips;
-
-CREATE TABLE `trips` (
-  route_id VARCHAR(50),
-  service_id VARCHAR(50),
-  trip_id VARCHAR(50) PRIMARY KEY,
-  trip_headsign VARCHAR(255),
-  trip_short_name VARCHAR(50),
-  direction_id INT,
-  block_id VARCHAR(50),
-  shape_id VARCHAR(50),
-  wheelchair_accessible INT,
-  bikes_allowed INT
-);
-
-DROP TABLE IF EXISTS stop_times;
-
-CREATE TABLE `stop_times` (
-  trip_id VARCHAR(50),
-  arrival_time VARCHAR(8),
-  departure_time VARCHAR(8),
-  stop_id VARCHAR(50),
-  stop_sequence INT UNSIGNED,
-  stop_headsign VARCHAR(50),
-  pickup_type INT,
-  drop_off_type INT,
-  continuous_pickup INT,
-  continuous_drop_off INT,
-  shape_dist_traveled DOUBLE,
-  timepoint INT,
-  PRIMARY KEY (trip_id, stop_sequence)
-);
-
-DROP TABLE IF EXISTS calendar;
 
 CREATE TABLE `calendar` (
   service_id VARCHAR(50) PRIMARY KEY,
@@ -97,8 +66,6 @@ CREATE TABLE `calendar` (
   end_date VARCHAR(8)
 );
 
-DROP TABLE IF EXISTS calendar_dates;
-
 CREATE TABLE `calendar_dates` (
   service_id VARCHAR(50),
   `date` VARCHAR(10),
@@ -106,7 +73,38 @@ CREATE TABLE `calendar_dates` (
   PRIMARY KEY (service_id, `date`)
 );
 
-DROP TABLE IF EXISTS shapes;
+CREATE TABLE `trips` (
+  route_id VARCHAR(50),
+  service_id VARCHAR(50),
+  trip_id VARCHAR(50) PRIMARY KEY,
+  trip_headsign VARCHAR(255),
+  trip_short_name VARCHAR(50),
+  direction_id INT,
+  block_id VARCHAR(50),
+  shape_id VARCHAR(50),
+  wheelchair_accessible INT,
+  bikes_allowed INT,
+  FOREIGN KEY (route_id) REFERENCES routes(route_id),
+  FOREIGN KEY (service_id) REFERENCES calendar_dates(service_id)
+);
+
+CREATE TABLE `stop_times` (
+  trip_id VARCHAR(50),
+  arrival_time VARCHAR(8),
+  departure_time VARCHAR(8),
+  stop_id VARCHAR(50),
+  stop_sequence INT UNSIGNED,
+  stop_headsign VARCHAR(50),
+  pickup_type INT,
+  drop_off_type INT,
+  continuous_pickup INT,
+  continuous_drop_off INT,
+  shape_dist_traveled DOUBLE,
+  timepoint INT,
+  PRIMARY KEY (trip_id, stop_sequence),
+  FOREIGN KEY (stop_id) REFERENCES stops(stop_id),
+  FOREIGN KEY (trip_id) REFERENCES trips(trip_id)
+);
 
 CREATE TABLE `shapes` (
   shape_id VARCHAR(50),
